@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using N7Emporium.Data;
 using N7Emporium.Models;
+using SendGrid;
 
 namespace N7Emporium.Controllers
 {
@@ -14,10 +15,12 @@ namespace N7Emporium.Controllers
         private const string ANONYMOUS_IDENTIFIER = "AnonymousIdentifier";
 
         private readonly N7EmporiumContext _context;
+        private readonly ISendGridClient _sendGridClient;
 
-        public CheckoutController(N7EmporiumContext context)
+        public CheckoutController(N7EmporiumContext context, ISendGridClient sendGridClient)
         {
             _context = context;
+            _sendGridClient = sendGridClient;
         }
 
         public IActionResult Checkout()
@@ -91,6 +94,27 @@ namespace N7Emporium.Controllers
                 _context.Carts.Remove(cart);
                 Response.Cookies.Delete(ANONYMOUS_IDENTIFIER);
                 _context.SaveChanges();
+
+                var message = new SendGrid.Helpers.Mail.SendGridMessage
+                {
+                    From = new SendGrid.Helpers.Mail.EmailAddress(
+                        "N7Emporium.Admin@N7.com", "N7 Administration"),
+                    Subject = "Receipt for order #" + order.TrackingNumber,
+                    HtmlContent = "Thanks for your order!"
+                };
+                message.AddTo(model.Email);
+
+                var result = await _sendGridClient.SendEmailAsync(message);
+                //This can be helpful debug code, but we wont display it out to the user:
+                var responseBody = await result.DeserializeResponseBodyAsync(result.Body);
+                if (responseBody != null)
+                {
+                    foreach (var body in responseBody)
+                    {
+                        Console.WriteLine(body.Key + ":" + body.Value);
+                    }
+                }
+
                 return RedirectToAction("Receipt", "Receipt", new { id = order.TrackingNumber });
             }
 

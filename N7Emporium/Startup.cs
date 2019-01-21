@@ -40,6 +40,12 @@ namespace N7Emporium
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<N7EmporiumContext>();
 
+            services.AddTransient<SendGrid.ISendGridClient>((s) =>
+            {
+                return new SendGrid.SendGridClient(Configuration.GetValue<string>("SendGrid:Key"));
+            });
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //services.AddDbContext<Data.N7EmporiumContext>(options => { options.UseSqlServer(Configuration.GetConnectionString("N7EmporiumConnection")); });
