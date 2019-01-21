@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using N7Emporium.Data;
@@ -15,12 +17,12 @@ namespace N7Emporium.Controllers
         private const string ANONYMOUS_IDENTIFIER = "AnonymousIdentifier";
 
         private readonly N7EmporiumContext _context;
-        private readonly ISendGridClient _sendGridClient;
+        private readonly IEmailSender _emailSender;
 
-        public CheckoutController(N7EmporiumContext context, ISendGridClient sendGridClient)
+        public CheckoutController(N7EmporiumContext context, IEmailSender emailSender)
         {
             _context = context;
-            _sendGridClient = sendGridClient;
+            _emailSender = emailSender;
         }
 
         public IActionResult Checkout()
@@ -104,16 +106,11 @@ namespace N7Emporium.Controllers
                 };
                 message.AddTo(model.Email);
 
-                var result = await _sendGridClient.SendEmailAsync(message);
-                //This can be helpful debug code, but we wont display it out to the user:
-                var responseBody = await result.DeserializeResponseBodyAsync(result.Body);
-                if (responseBody != null)
-                {
-                    foreach (var body in responseBody)
-                    {
-                        Console.WriteLine(body.Key + ":" + body.Value);
-                    }
-                }
+                await _emailSender.SendEmailAsync(
+                    model.Email,
+                    "Receipt for order #" + order.TrackingNumber,
+                    "Thanks for your order!"
+                    );
 
                 return RedirectToAction("Receipt", "Receipt", new { id = order.TrackingNumber });
             }
@@ -121,5 +118,23 @@ namespace N7Emporium.Controllers
 
             return View();
         }
+
+
+        /*private string FormatOrderAsHtml(Order order, HttpRequest httpRequest)
+        {
+            return string.Format(@"
+               <div>
+                <h1>Thank you for Your Order!</h1>
+                <p>Thanks for order from N7 Emporium on {0}, your order is {1}. Please check {2} to track shipping and delivery.</p>
+                <h2>Order Items</h2>
+                <table>
+                    {3}
+                </table>
+              </div>",
+              DateTime.Now,
+              order.TrackingNumber,
+              string.Format("{0}://{1}receipt/index/{2}", httpRequest.Scheme, httpRequest.Host, order.TrackingNumber),
+              string.Join("", order.WeaponOrders.Select(OrderItem => string.Format()
+        }*/
     }
 }

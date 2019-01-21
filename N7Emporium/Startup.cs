@@ -12,6 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using N7Emporium.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using SendGrid;
+using N7Emporium.Services;
 
 namespace N7Emporium
 {
@@ -43,6 +46,11 @@ namespace N7Emporium
             services.AddTransient<SendGrid.ISendGridClient>((s) =>
             {
                 return new SendGrid.SendGridClient(Configuration.GetValue<string>("SendGrid:Key"));
+            });
+
+            services.AddTransient<IEmailSender>((s) =>
+            {
+                return new EmailSender(s.GetService<ISendGridClient>());
             });
 
 

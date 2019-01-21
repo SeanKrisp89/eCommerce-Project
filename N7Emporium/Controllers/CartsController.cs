@@ -30,7 +30,7 @@ namespace N7Emporium.Controllers
             if (User.Identity.IsAuthenticated)   //All controllers and views have a "User" property which I can check.  This returns True if they are logged in, false otherwise
             {
                 username = User.Identity.Name;   //I can track carts by user name
-                customer = _context.Users.Include(x => x.Carts).ThenInclude(x => x.ShipCarts).ThenInclude(x => x.Ship).FirstOrDefault(x => x.UserName == username);
+                customer = _context.Users.Include(x => x.Carts).ThenInclude(x => x.ShipCarts).ThenInclude(x => x.Ship).Include(x => x.Carts).ThenInclude(x => x.WeaponCarts).ThenInclude(x => x.Weapon).Include(x => x.Carts).ThenInclude(x => x.ArmorCarts).ThenInclude(x => x.Armor).FirstOrDefault(x => x.UserName == username);
                 cart = customer.Carts.FirstOrDefault();
             }
             else
