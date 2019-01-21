@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
+    padding-top: 68px;
     padding-bottom: 20px;
     background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
     background-attachment: fixed;
@@ -85,15 +85,15 @@ li a:hover{
 }
 
 .weapons-header{
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .armor-header {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .ships-header {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 /* Wrapping element */
@@ -157,4 +157,16 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 
 .brand{
    height: 70px;
+}
+
+.label-space{
+    margin-right: 5px;
+}
+
+.center-div{
+    margin: 0 auto;
+}
+
+.form-spacing {
+    margin-bottom: 10px;
 }
