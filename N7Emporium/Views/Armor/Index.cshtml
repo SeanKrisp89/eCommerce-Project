@@ -1,0 +1,40 @@
+﻿@model IEnumerable<N7Emporium.Data.Armor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="armor-header">
+    <h2 style="color: red; text-align: center;">Available Armor</h2>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div style="background-color: black; border: 4px solid black; margin-bottom: 20px;" class="card fixed-armor">
+                <img class="fixed-pic" src="@Html.DisplayFor(modelItem => item.Image)" alt="..." style="width:100%">
+                <div class="card-body">
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    <div class="col-xs-6">
+                        <p>Price: $@Html.DisplayFor(modelItem => item.Price)</p>
+                        <p>Weight: @Html.DisplayFor(modelItem => item.Weight) lbs</p>
+                        <p>Type: @Html.DisplayFor(modelItem => item.Type)</p>
+                    </div>
+                    <p>Dexterity: @Html.DisplayFor(modelItem => item.Dexterity)</p>
+                    <p>Kinetic Barrier: @Html.DisplayFor(modelItem => item.KineticBarrier) r</p>
+                    <p>Medi-Gel Capacity: @Html.DisplayFor(modelItem => item.MediGelCapacity) r/s</p>
+                </div>
+                <form class="form-inline" asp-action="add" asp-controller="Armor" method="get">
+                    <!-- This is saying use the ADD method FROM THE ARMOR controller.-->
+                    <label for="quantity">Quantity</label>
+                    <input class="form-control" type="number" value="1" min="1" max="10" name="quantity">
+                    <input type="hidden" value="@item.ArmorId" name="id" />
+                    <button class="btn btn-primary" style="margin-left: 10px;">Add to Cart</button>
+                </form>
+            </div>
+            
+        </div>
+    }
+</div>

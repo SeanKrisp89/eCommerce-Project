@@ -34,13 +34,16 @@ namespace N7Emporium
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<N7EmporiumContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddEntityFrameworkStores<N7EmporiumContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //services.AddDbContext<Data.N7EmporiumContext>(options => { options.UseSqlServer(Configuration.GetConnectionString("N7EmporiumConnection")); });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

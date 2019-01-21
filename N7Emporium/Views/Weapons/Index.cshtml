@@ -1,0 +1,45 @@
+﻿@model IEnumerable<N7Emporium.Data.Weapon>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="weapons-header">
+    <h2 style="color: red; text-align: center;">Available Weapons</h2>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-12 col-sm-4">
+            <div style="background-color: black; border: 4px solid black; margin-bottom: 20px;" class="thumbnail fixed-weapons">
+                <img src="@Html.DisplayFor(modelItem => item.Image)" alt="..." class="img-responsive" style="width:100%" />
+                <div class="card-body">
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                   
+                    <div class="col-xs-2">
+                        <p>Price: $@Html.DisplayFor(modelItem => item.Price)</p>
+                        <p>Weight: @Html.DisplayFor(modelItem => item.Weight) lbs</p>
+                        <p>Type: @Html.DisplayFor(modelItem => item.Type)</p>
+                    </div>
+                    <p>Range: @Html.DisplayFor(modelItem => item.Range) m</p>
+                    <p>Clip Size: @Html.DisplayFor(modelItem => item.ClipSize) r</p>
+                    <p>Fire Rate: @Html.DisplayFor(modelItem => item.FireRate) r/s</p>
+                </div>
+                <form class="form-inline" asp-action="add" asp-controller="Weapons" method="get">
+                    <!-- This is saying use the ADD method FROM THE ARMOR controller. I STILL NEED TO COPY THE ADD METHOD FROM SHIPSCONTROLLER TO WEAPONSCONTROLLER-->
+                    <label for="quantity">Quantity</label>
+                    <input class="form-control" type="number" value="1" min="1" max="10" name="quantity">
+                    <input type="hidden" value="@item.WeaponId" name="id" />
+                    <button class="btn btn-primary" style="margin-left: 10px;">Add to Cart</button>
+                </form>
+            </div>
+            
+        </div>
+    }
+
+</div>
+
+
+

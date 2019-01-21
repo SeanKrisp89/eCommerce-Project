@@ -1,0 +1,92 @@
+﻿@model N7Emporium.Data.Cart
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2 style="text-align: center;">Details</h2>
+
+
+<h4>Cart</h4>
+<table class="table">
+    @foreach (var weapon in Model.WeaponCarts)
+    {
+        <tr>
+            <td>@weapon.Weapon.Name</td>
+            <td>@weapon.Weapon.Price.ToString("C")</td>
+            <td>
+                <form method="get" asp-action="remove" asp-controller="carts">
+                    <input type="hidden" name="id" value="@weapon.WeaponId" />
+                    <input type="hidden" name="type" value="weapon" />
+                    <button class="btn btn-danger">Remove</button>
+                </form>
+                <form asp-controller="carts" asp-action="update">
+                    <input type="hidden" value="@weapon.WeaponId" name="id" />
+                    <input type="number" value="@weapon.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                    <input type="hidden" name="type" value="weapon" />
+                </form>
+            </td>
+        </tr>
+    }
+    @foreach (var armor in Model.ArmorCarts)
+    {
+        <tr>
+            <td>@armor.Armor.Name</td>
+            <td>@armor.Armor.Price.ToString("C")</td>
+            <td>
+                <form method="get" asp-action="remove" asp-controller="carts">
+                    <input type="hidden" name="id" value="@armor.ArmorId" />
+                    <input type="hidden" name="type" value="armor" />
+                    <button class="btn btn-danger">Remove</button>
+                </form>
+                <form asp-controller="carts" asp-action="update">
+                    <input type="hidden" value="@armor.ArmorId" name="id" />
+                    <input type="number" value="@armor.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                    <input type="hidden" name="type" value="armor" />
+                </form>
+            </td>
+        </tr>
+    }
+    @foreach (var ship in Model.ShipCarts)
+
+    {
+        <tr>
+            <td>@ship.Ship.Name</td>
+            <td>@ship.Ship.Price.ToString("C")</td>
+            <td>
+                <form method="get" asp-action="remove" asp-controller="carts">
+                    <input type="hidden" name="id" value="@ship.ShipId" />
+                    <input type="hidden" name="type" value="ship" />
+                    <button class="btn btn-danger">Remove</button>
+                </form>
+                <form asp-controller="carts" asp-action="update">
+                    <input type="hidden" value="@ship.ShipId" name="id" />
+                    <input type="number" value="@ship.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                    <input type="hidden" name="type" value="ship" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="checkout-button">
+    <a asp-action="checkout" asp-controller="checkout" class="btn btn-primary">Proceed to Checkout</a>
+</div>
+
+
+
+
+<div>
+    @Html.DisplayNameFor(model => model.CookieId)
+
+    @Html.DisplayFor(model => model.CookieId)
+
+    @Html.DisplayNameFor(model => model.DateCreated)
+
+    @Html.DisplayFor(model => model.DateCreated)
+</div>
+
+
+
+
+

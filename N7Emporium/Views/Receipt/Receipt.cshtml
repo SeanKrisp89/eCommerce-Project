@@ -1,0 +1,32 @@
+﻿@model N7Emporium.Data.Order
+
+@{
+    ViewData["Title"] = "Receipt";
+}
+
+<h2>Receipt</h2>
+
+<h2>Details for @Model.TrackingNumber</h2>
+<dl>
+    <dt>Order Date</dt>
+    <dd>@Model.PlacementDate.ToShortDateString()</dd>
+    <dt>Ship Date</dt>
+    <dd>@(Model.ShipDate.HasValue ? Model.ShipDate.Value.ToShortDateString() : "Not Shipped")</dd>
+    <dt>Delivered Date</dt>
+    <dd">@(Model.DeliveryDate.HasValue ? Model.DeliveryDate.Value.ToShortDateString() : "Not Delivered")</dd">
+</dl>
+<ul>
+    @foreach (var item in Model.WeaponOrders)
+    {
+        <li>@item.Weapon.Name</li>
+    }
+    @foreach (var item in Model.ArmorOrders)
+    {
+        <li>@item.Armor.Name</li>
+    }
+    @foreach (var item in Model.ShipOrders)
+    {
+        <li>@item.Ship.Name</li>
+    }
+</ul>
+

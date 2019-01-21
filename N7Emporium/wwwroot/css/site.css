@@ -3,6 +3,97 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+span{
+    font-size: 1.3em;
+    font-weight: 600;
+    color: red;
+}
+
+.home-div{
+    margin-top: 12%;
+    background-color: black;
+    border: 3px solid red;
+    /*box-shadow: -5px -10px 10px red;*/
+}
+
+.about{
+    color: red;
+}
+
+.about-div {
+    border: 3px solid white;
+    overflow: auto;
+    height: 250px;
+    width: 900px;
+    border-radius: 15px;
+    padding: 10px 10px 10px 15px;
+    background-image: url("https://lh3.googleusercontent.com/9h6vZcjigz_E6Zh1Hbjpr6NTrsKg5_UX-Pr0nKi2K029nCjIXnVsjFJ3pUk_7isGY76-Cbsmiw=w640-h400-e365");
+    margin: 0 auto;
+}
+
+.contact-photo{
+    width: 35%;
+    margin-left: 33%;
+    border: 5px solid red;
+    border-radius: 40%;
+    
+}
+
+#checkout-button{
+    margin-bottom: 10px;
+}
+
+.contact-div{
+    width: 100%;
+}
+
+nav a {
+    font-size: 1.3em;
+}
+
+li a {
+    color: red;
+}
+
+li a:hover{
+    color: white;
+}
+
+.dropdown-menu a {
+    color: red;
+    font-weight: 600;
+}
+
+.dropdown-menu a:hover {
+    color: white;
+    background: black;
+}
+
+.dropdown-menu-item {
+    background-color: black;
+}
+
+.checkout-header{
+    margin-top: 5%;
+}
+
+.weapons-header{
+    margin-top: 5%;
+}
+
+.armor-header {
+    margin-top: 5%;
+}
+
+.ships-header {
+    margin-top: 5%;
 }
 
 /* Wrapping element */
@@ -34,4 +125,36 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu {
+    display: block;
+}
+
+.fixed-armor {
+    height: 850px;
+}
+
+.fixed-weapons {
+    height: 550px;
+}
+
+.fixed-ships{
+    height: 550px;
+}
+
+.fixed-pic{
+    height: 342px;
+}
+
+.video{
+    width: 100%;
+}
+
+.quantity{
+    width: 50px;
+}
+
+.brand{
+   height: 70px;
 }

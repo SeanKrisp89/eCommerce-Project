@@ -17,20 +17,22 @@ namespace N7Emporium.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "This is where I'll put the N7 Emporium description.";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "This is where I'll put N7 Emporium contact details.";
 
             return View();
         }
 
         public IActionResult Privacy()
         {
+            ViewData["Message"] = "This is where I'll detail my privacy policy.";
+
             return View();
         }
 
