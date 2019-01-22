@@ -183,3 +183,6 @@ input[type = "submit"] {
     background: blue;
 }
 
+.central-table {
+    vertical-align: middle;
+}
