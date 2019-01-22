@@ -16,24 +16,24 @@
             <div style="background-color: black; border: 4px solid black; margin-bottom: 20px;" class="thumbnail fixed-weapons">
                 <img src="@Html.DisplayFor(modelItem => item.Image)" alt="..." class="img-responsive" style="width:100%" />
                 <div class="card-body">
-                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
-                   
-                    <div class="col-xs-2">
-                        <p>Price: $@Html.DisplayFor(modelItem => item.Price)</p>
-                        <p>Weight: @Html.DisplayFor(modelItem => item.Weight) lbs</p>
-                        <p>Type: @Html.DisplayFor(modelItem => item.Type)</p>
+                    <div class="card-title-margin" style="text-align: center;">
+                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                     </div>
-                    <p>Range: @Html.DisplayFor(modelItem => item.Range) m</p>
-                    <p>Clip Size: @Html.DisplayFor(modelItem => item.ClipSize) r</p>
-                    <p>Fire Rate: @Html.DisplayFor(modelItem => item.FireRate) r/s</p>
-                </div>
-                <form class="form-inline" asp-action="add" asp-controller="Weapons" method="get">
-                    <!-- This is saying use the ADD method FROM THE ARMOR controller. I STILL NEED TO COPY THE ADD METHOD FROM SHIPSCONTROLLER TO WEAPONSCONTROLLER-->
-                    <label for="quantity">Quantity</label>
-                    <input class="form-control" type="number" value="1" min="1" max="10" name="quantity">
-                    <input type="hidden" value="@item.WeaponId" name="id" />
-                    <button class="btn btn-primary" style="margin-left: 10px;">Add to Cart</button>
-                </form>
+                    <div class="col-xs-2">
+                        <p><strong>Price:</strong> $@Html.DisplayFor(modelItem => item.Price)</p>
+                        <p><strong>Weight:</strong> @Html.DisplayFor(modelItem => item.Weight) lbs</p>
+                        <p><strong>Type:</strong> @Html.DisplayFor(modelItem => item.Type)</p>
+                    </div>
+                    <p><strong>Range:</strong> @Html.DisplayFor(modelItem => item.Range) m</p>
+                    <p><strong>Clip Size:</strong> @Html.DisplayFor(modelItem => item.ClipSize) r</p>
+                    <p><strong>Fire Rate:</strong> @Html.DisplayFor(modelItem => item.FireRate) r/s</p>
+                </div>               
+                    <form style="margin-left: 7%; margin-top: -5%;" class="form-inline" asp-action="add" asp-controller="Weapons" method="get">
+                        <label style="font-size: 1.3em;" class="label-space" for="quantity"><strong>Quantity:</strong></label>
+                        <input class="form-control" type="number" value="1" min="1" max="10" name="quantity">
+                        <input type="hidden" value="@item.WeaponId" name="id" />
+                        <button class="btn btn-danger" style="margin-left: 10px;">Add to Cart</button>
+                    </form>
             </div>
             
         </div>

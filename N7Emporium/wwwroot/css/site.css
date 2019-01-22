@@ -140,7 +140,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 }
 
 .fixed-ships{
-    height: 550px;
+    height: 575px;
 }
 
 .fixed-pic{
@@ -160,7 +160,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 }
 
 .label-space{
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 .center-div{
@@ -170,3 +170,16 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 .form-spacing {
     margin-bottom: 10px;
 }
+
+.weapons-form-spacing{
+    margin-bottom: 40px;
+}
+
+.card-title-margin{
+    margin-bottom: 10px;
+}
+
+input[type = "submit"] {
+    background: blue;
+}
+

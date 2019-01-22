@@ -13,23 +13,23 @@
     @foreach (var item in Model)
     {
         <div class="col-12 col-sm-4">
-            <div style="background-color: black; border: 4px solid black; margin-bottom: 20px;" class="card"> <!--Don't forget to add back "fixed-ships" class if messing with the card sizing.-->
+            <div style="background-color: black; border: 4px solid black; margin-bottom: 20px;" class="card fixed-ships"> <!--Don't forget to add back "fixed-ships" class if messing with the card sizing.-->
                 <img src="@Html.DisplayFor(modelItem => item.Image)" alt="..." style="width:100%">
                 <div class="card-body">
-                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <div class="card-title-margin" style="text-align: center;">
+                        <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    </div>
                     <p>@Html.DisplayFor(modelItem => item.Description)</p>
                     <div class="col-xs-6">
                         <p><strong>Price:</strong> $@Html.DisplayFor(modelItem => item.Price)</p>
-                        <p></p>
                         <p><strong>Type:</strong> @Html.DisplayFor(modelItem => item.Type)</p>
                     </div>
                 </div>
-                <form class="form-inline center-div form-spacing" asp-action="add" asp-controller="Ships" method="get">
-                    <!-- This is saying use the ADD method FROM THE SHIPS controller-->                  
+                <form class="form-inline center-div form-spacing" asp-action="add" asp-controller="Ships" method="get">  
                         <label class="label-space" for="quantity"><strong>Quantity:</strong></label>
                         <input class="form-control" type="number" value="1" min="1" max="10" name="quantity">
                         <input type="hidden" value="@item.ShipId" name="id" />
-                        <button class="btn btn-primary" style="margin-left: 10px;">Add to Cart</button>
+                        <button class="btn btn-danger" style="margin-left: 10px;">Add to Cart</button>
                 </form>
             </div>
             

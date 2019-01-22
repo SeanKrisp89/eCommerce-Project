@@ -112,6 +112,7 @@ namespace N7Emporium.Controllers
                     "Thanks for your order!"
                     );
 
+                //The "actionname" i.e. the first argument must be the actual name of the view. So my receipt controller, has a method called Receipt, which is the view name. 
                 return RedirectToAction("Receipt", "Receipt", new { id = order.TrackingNumber });
             }
 
