@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using N7Emporium.Data;
 using N7Emporium.Models;
 using SendGrid;
+using Braintree;
 
 namespace N7Emporium.Controllers
 {
@@ -18,21 +19,24 @@ namespace N7Emporium.Controllers
 
         private readonly N7EmporiumContext _context;
         private readonly IEmailSender _emailSender;
+        private readonly IBraintreeGateway _braintreeGateway;
 
-        public CheckoutController(N7EmporiumContext context, IEmailSender emailSender)
+        public CheckoutController(N7EmporiumContext context, IEmailSender emailSender, IBraintreeGateway braintreeGateway)
         {
             _context = context;
             _emailSender = emailSender;
+            _braintreeGateway = braintreeGateway;
         }
 
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout()
         {
+            ViewBag.BraintreeClientToken = await _braintreeGateway.ClientToken.GenerateAsync();
             return View();
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Checkout(CheckoutViewModel model)
+        public async Task<IActionResult> Checkout(CheckoutViewModel model, string braintreeNonce)
         {
             string username = null;
             int? anonymousIdentifier = null;
@@ -62,58 +66,68 @@ namespace N7Emporium.Controllers
 
             if (ModelState.IsValid)
             {
-                Order order = new Order
+                TransactionRequest transactionRequest = new TransactionRequest
                 {
-                    ContactEmail = model.Email,
-                    ContactPhoneNumber = model.PhoneNumber,
-                    ShippingStreet1 = model.Street1,
-                    ShippingStreet2 = model.Street2,
-                    ShippingCity = model.City,
-                    ShippingState = model.State,
-                    ShippingPostalCode = model.PostalCode,
-
-
-                    PlacementDate = DateTime.UtcNow,
-                    TrackingNumber = Guid.NewGuid().ToString().Substring(0, 8),
-                    SubTotal = cart.WeaponCarts.Sum(x => x.Quantity * x.Weapon.Price) + cart.ArmorCarts.Sum(x => x.Quantity * x.Armor.Price) + cart.ShipCarts.Sum(x => x.Quantity * x.Ship.Price),
-                    Total = cart.WeaponCarts.Sum(x => x.Quantity * x.Weapon.Price) + cart.ArmorCarts.Sum(x => x.Quantity * x.Armor.Price) + cart.ShipCarts.Sum(x => x.Quantity * x.Ship.Price),
-                    ArmorOrders = cart.ArmorCarts.Select(cartItem => new ArmorOrder
-                    {   
-                        Quantity = cartItem.Quantity, ArmorId = cartItem.ArmorId
-                    }).ToArray(),
-                    WeaponOrders = cart.WeaponCarts.Select(cartItem => new WeaponOrder
-                    {
-                        Quantity = cartItem.Quantity,
-                        WeaponId = cartItem.WeaponId
-                    }).ToArray(),
-                    ShipOrders = cart.ShipCarts.Select(cartItem => new ShipOrder
-                    {
-                        Quantity = cartItem.Quantity,
-                        ShipId = cartItem.ShipId
-                    }).ToArray(),
+                    Amount = 1,
+                    PaymentMethodNonce = braintreeNonce
                 };
-                _context.Orders.Add(order);
-                _context.Carts.Remove(cart);
-                Response.Cookies.Delete(ANONYMOUS_IDENTIFIER);
-                _context.SaveChanges();
-
-                var message = new SendGrid.Helpers.Mail.SendGridMessage
+                var transactionResult = await _braintreeGateway.Transaction.SaleAsync(transactionRequest);
+                if (transactionResult.IsSuccess())
                 {
-                    From = new SendGrid.Helpers.Mail.EmailAddress(
-                        "N7Emporium.Admin@N7.com", "N7 Administration"),
-                    Subject = "Receipt for order #" + order.TrackingNumber,
-                    HtmlContent = "Thanks for your order!"
-                };
-                message.AddTo(model.Email);
+                    Order order = new Order
+                    {
+                        ContactEmail = model.Email,
+                        ContactPhoneNumber = model.PhoneNumber,
+                        ShippingStreet1 = model.Street1,
+                        ShippingStreet2 = model.Street2,
+                        ShippingCity = model.City,
+                        ShippingState = model.State,
+                        ShippingPostalCode = model.PostalCode,
 
-                await _emailSender.SendEmailAsync(
-                    model.Email,
-                    "Receipt for order #" + order.TrackingNumber,
-                    "Thanks for your order!"
-                    );
 
+                        PlacementDate = DateTime.UtcNow,
+                        TrackingNumber = Guid.NewGuid().ToString().Substring(0, 8),
+                        SubTotal = cart.WeaponCarts.Sum(x => x.Quantity * x.Weapon.Price) + cart.ArmorCarts.Sum(x => x.Quantity * x.Armor.Price) + cart.ShipCarts.Sum(x => x.Quantity * x.Ship.Price),
+                        Total = cart.WeaponCarts.Sum(x => x.Quantity * x.Weapon.Price) + cart.ArmorCarts.Sum(x => x.Quantity * x.Armor.Price) + cart.ShipCarts.Sum(x => x.Quantity * x.Ship.Price),
+                        ArmorOrders = cart.ArmorCarts.Select(cartItem => new ArmorOrder
+                        {
+                            Quantity = cartItem.Quantity,
+                            ArmorId = cartItem.ArmorId
+                        }).ToArray(),
+                        WeaponOrders = cart.WeaponCarts.Select(cartItem => new WeaponOrder
+                        {
+                            Quantity = cartItem.Quantity,
+                            WeaponId = cartItem.WeaponId
+                        }).ToArray(),
+                        ShipOrders = cart.ShipCarts.Select(cartItem => new ShipOrder
+                        {
+                            Quantity = cartItem.Quantity,
+                            ShipId = cartItem.ShipId
+                        }).ToArray(),
+                    };
+                    _context.Orders.Add(order);
+                    _context.Carts.Remove(cart);
+                    Response.Cookies.Delete(ANONYMOUS_IDENTIFIER);
+                    _context.SaveChanges();
+
+                    /*var message = new SendGrid.Helpers.Mail.SendGridMessage
+                    {
+                        From = new SendGrid.Helpers.Mail.EmailAddress(
+                            "N7Emporium.Admin@N7.com", "N7 Administration"),
+                        Subject = "Receipt for order #" + order.TrackingNumber,
+                        HtmlContent = "Thanks for your order!"
+                    };
+                    message.AddTo(model.Email);*/
+
+                    await _emailSender.SendEmailAsync(
+                        model.Email,
+                        "Receipt for order #" + order.TrackingNumber,
+                        "Thanks for your order!"
+                        );
                 //The "actionname" i.e. the first argument must be the actual name of the view. So my receipt controller, has a method called Receipt, which is the view name. 
                 return RedirectToAction("Receipt", "Receipt", new { id = order.TrackingNumber });
+                }
+
             }
 
 

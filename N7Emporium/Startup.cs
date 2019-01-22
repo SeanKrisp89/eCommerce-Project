@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using SendGrid;
 using N7Emporium.Services;
+using Braintree;
 
 namespace N7Emporium
 {
@@ -58,6 +59,15 @@ namespace N7Emporium
 
             //services.AddDbContext<Data.N7EmporiumContext>(options => { options.UseSqlServer(Configuration.GetConnectionString("N7EmporiumConnection")); });
 
+            services.AddTransient<Braintree.IBraintreeGateway>((s) =>
+            {
+                return new Braintree.BraintreeGateway(
+                    Configuration.GetValue<string>("Braintree:Environment"),
+                    Configuration.GetValue<string>("Braintree:MerchantId"),
+                    Configuration.GetValue<string>("Braintree:PublicKey"),
+                    Configuration.GetValue<string>("Braintree:PrivateKey"));
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,5 +97,7 @@ namespace N7Emporium
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+        
     }
 }
