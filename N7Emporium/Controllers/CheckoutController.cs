@@ -68,7 +68,7 @@ namespace N7Emporium.Controllers
             {
                 TransactionRequest transactionRequest = new TransactionRequest
                 {
-                    Amount = 1,
+                    Amount = cart.WeaponCarts.Sum(x => x.Quantity * x.Weapon.Price) + cart.ArmorCarts.Sum(x => x.Quantity * x.Armor.Price) + cart.ShipCarts.Sum(x => x.Quantity * x.Ship.Price),
                     PaymentMethodNonce = braintreeNonce
                 };
                 var transactionResult = await _braintreeGateway.Transaction.SaleAsync(transactionRequest);

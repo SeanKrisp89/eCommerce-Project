@@ -30,7 +30,7 @@ span{
 .about-div {
     border: 3px solid white;
     overflow: auto;
-    height: 250px;
+    height: 600px;
     width: 900px;
     border-radius: 15px;
     padding: 10px 10px 10px 15px;
