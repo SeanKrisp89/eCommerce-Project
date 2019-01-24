@@ -12,8 +12,8 @@
     @foreach (var item in Model)
     {
         <div class="col-md-4">
-            <div style="background-color: black; border: 4px solid black; margin-bottom: 20px;" class="card fixed-armor">
-                <img class="fixed-pic" src="@Html.DisplayFor(modelItem => item.Image)" alt="..." style="width:100%">
+            <div style="background-color: black; border-radius: 20px; border: 4px solid black; margin-bottom: 20px;" class="card fixed-armor">
+                <img class="fixed-pic" src="@Html.DisplayFor(modelItem => item.Image)" alt="..." style="width:100%; border-radius: 20px;">
                 <div class="card-body">
                     <div class="card-title-margin" style="text-align: center;">
                         <h3>@Html.DisplayFor(modelItem => item.Name)</h3>

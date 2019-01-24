@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N7Emporium", "N7Emporium\N7Emporium.csproj", "{7EA72F78-A5A0-4395-B167-F64ADDECF211}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N7Emporium", "N7Emporium\N7Emporium.csproj", "{7EA72F78-A5A0-4395-B167-F64ADDECF211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N7.Tests", "N7.Tests\N7.Tests.csproj", "{6E598415-52F3-4872-8B30-70D60DA49A86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7EA72F78-A5A0-4395-B167-F64ADDECF211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EA72F78-A5A0-4395-B167-F64ADDECF211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EA72F78-A5A0-4395-B167-F64ADDECF211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E598415-52F3-4872-8B30-70D60DA49A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E598415-52F3-4872-8B30-70D60DA49A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E598415-52F3-4872-8B30-70D60DA49A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E598415-52F3-4872-8B30-70D60DA49A86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

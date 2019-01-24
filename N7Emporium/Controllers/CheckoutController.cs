@@ -10,6 +10,8 @@ using N7Emporium.Data;
 using N7Emporium.Models;
 using SendGrid;
 using Braintree;
+using SmartyStreets;
+using SmartyStreets.USStreetApi;
 
 namespace N7Emporium.Controllers
 {
@@ -20,12 +22,15 @@ namespace N7Emporium.Controllers
         private readonly N7EmporiumContext _context;
         private readonly IEmailSender _emailSender;
         private readonly IBraintreeGateway _braintreeGateway;
+        private readonly IClient<Lookup> _usStreetClient;
+        
 
-        public CheckoutController(N7EmporiumContext context, IEmailSender emailSender, IBraintreeGateway braintreeGateway)
+        public CheckoutController(N7EmporiumContext context, IEmailSender emailSender, IBraintreeGateway braintreeGateway, IClient<SmartyStreets.USStreetApi.Lookup> usStreetClient)
         {
             _context = context;
             _emailSender = emailSender;
             _braintreeGateway = braintreeGateway;
+            _usStreetClient = usStreetClient;
         }
 
         public async Task<IActionResult> Checkout()
@@ -134,7 +139,24 @@ namespace N7Emporium.Controllers
             return View();
         }
 
+        public IActionResult ValidateAddress(string street, string street2, string city, string state, string zipCode)
+        {
+            if (string.IsNullOrEmpty(street) || string.IsNullOrEmpty(city) || string.IsNullOrEmpty(state) || string.IsNullOrEmpty(zipCode))
+            {
+                return BadRequest("street, city, state, and zipCode are required");
+            }
+            SmartyStreets.USStreetApi.Lookup lookup = new Lookup
+            {
+                Street = street,
+                Street2 = street2,
+                City = city,
+                State = state,
+                ZipCode = zipCode
+            };
+            _usStreetClient.Send(lookup);
 
+            return Json(lookup.Result.ToArray());
+        }
         /*private string FormatOrderAsHtml(Order order, HttpRequest httpRequest)
         {
             return string.Format(@"

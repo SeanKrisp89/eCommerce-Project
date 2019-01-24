@@ -54,6 +54,14 @@ namespace N7Emporium
                 return new EmailSender(s.GetService<ISendGridClient>());
             });
 
+            services.AddTransient<SmartyStreets.IClient<SmartyStreets.USStreetApi.Lookup>>((s) =>
+            {
+                return new SmartyStreets.ClientBuilder(
+                    Configuration.GetValue<string>("SmartyStreets:AuthId"),
+                    Configuration.GetValue<string>("SmartyStreets:AuthToken")
+                ).BuildUsStreetApiClient();
+            });
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

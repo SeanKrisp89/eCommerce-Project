@@ -13,8 +13,8 @@
     @foreach (var item in Model)
     {
         <div class="col-12 col-sm-4">
-            <div style="background-color: black; border: 4px solid black; margin-bottom: 20px;" class="card fixed-ships"> <!--Don't forget to add back "fixed-ships" class if messing with the card sizing.-->
-                <img src="@Html.DisplayFor(modelItem => item.Image)" alt="..." style="width:100%">
+            <div style="background-color: black; border-radius: 20px; border: 4px solid black; margin-bottom: 20px;" class="card fixed-ships"> <!--Don't forget to add back "fixed-ships" class if messing with the card sizing.-->
+                <img src="@Html.DisplayFor(modelItem => item.Image)" alt="..." style="width:100%; border-radius: 20px;">
                 <div class="card-body">
                     <div class="card-title-margin" style="text-align: center;">
                         <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
