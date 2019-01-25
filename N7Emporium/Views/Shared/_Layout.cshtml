@@ -33,13 +33,14 @@
                     </div>
                 </li>
             </ul>
-            <span style="margin-left: -10%; font-family: 'Saucer BB'; font-size: 1.7em;" class="navbar-text">N7 EMPORIUM</span>
+            <span style="margin-left: -10%; font-family: 'Black Ops One'; font-size: 1.7em;" class="navbar-text text-sm-center">N7 EMPORIUM</span>
             <partial name="_LoginPartial" />
         </div>
     </nav>
     
 
     <partial name="_CookieConsentPartial" />
+    @RenderSection("Header", false)  <!--Here Joe made a new section called Header. The first parameter is the name of the section, and the second is whether it's required on every page or not.-->
 
     <div class="container body-content">
         @RenderBody()

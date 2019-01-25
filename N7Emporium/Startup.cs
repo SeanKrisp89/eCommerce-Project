@@ -39,8 +39,9 @@ namespace N7Emporium
             });
 
             services.AddDbContext<N7EmporiumContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseInMemoryDatabase("Default")
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<N7EmporiumContext>();
 
@@ -94,7 +95,7 @@ namespace N7Emporium
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
 
             app.UseAuthentication();
 

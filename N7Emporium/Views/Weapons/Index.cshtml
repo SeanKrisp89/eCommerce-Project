@@ -4,40 +4,48 @@
     ViewData["Title"] = "Index";
 }
 
-
-<div class="weapons-header">
-    <h2 style="color: red; text-align: center;">Available Weapons</h2>
-</div>
-<hr />
+@section Header{
+    <div style="background-color: black;" class="container-fluid section-header">
+        <h2 style="color: red; text-align: center;">Available Weapons</h2>
+    </div>
+    <hr />
+}
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-12 col-sm-4">
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
             <div>
-                <div style="background-color: black; border-radius: 20px; border: 4px solid black; margin-bottom: 20px;" class="thumbnail fixed-weapons">                
-                        <img src="@Html.DisplayFor(modelItem => item.Image)" alt="..." class="img-responsive" style="width:100%; border-radius: 20px;" />                   
+                <div style="background-color: black; border-radius: 20px; border: 4px solid black; margin-bottom: 20px;" class="card">
+                    <img src="@Html.DisplayFor(modelItem => item.Image)" alt="..." class="img-responsive" style="width:100%; border-radius: 20px;" />
                     <div class="card-body">
                         <div class="card-title-margin" style="text-align: center;">
                             <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                         </div>
                         <div class="col-xs-2">
-                            <p><strong>Price:</strong> $@Html.DisplayFor(modelItem => item.Price)</p>
-                            <p><strong>Weight:</strong> @Html.DisplayFor(modelItem => item.Weight) lbs</p>
-                            <p><strong>Type:</strong> @Html.DisplayFor(modelItem => item.Type)</p>
+                            <p>Price: $@Html.DisplayFor(modelItem => item.Price)</p>
+                            <p>Weight: @Html.DisplayFor(modelItem => item.Weight) lbs</p>
+                            <p>Type: @Html.DisplayFor(modelItem => item.Type)</p>
                         </div>
-                        <p><strong>Range:</strong> @Html.DisplayFor(modelItem => item.Range) m</p>
-                        <p><strong>Clip Size:</strong> @Html.DisplayFor(modelItem => item.ClipSize) r</p>
-                        <p><strong>Fire Rate:</strong> @Html.DisplayFor(modelItem => item.FireRate) r/s</p>
+                        <p>Range: @Html.DisplayFor(modelItem => item.Range) m</p>
+                        <p>Clip Size: @Html.DisplayFor(modelItem => item.ClipSize) r</p>
+                        <p>Fire Rate: @Html.DisplayFor(modelItem => item.FireRate) r/s</p>
+                        <div>
+                            <form asp-action="add" asp-controller="Weapons" method="get">
+                                <div class="form-row form-alignment" style="margin-bottom: 3%;">                                           
+                                        <label class="text-center" style="font-size: 1.2em; line-height:2em" for="quantity">Quantity:</label>                             
+                                        <div class="col" style="vertical-align: middle;">
+                                            <input style="width: 27%;" class="form-control" id="bob" type="number" pattern="\d*" value="1" min="1" max="10" name="quantity">
+                                            <input type="hidden" value="@item.WeaponId" name="id" />
+                                        </div>
+                                </div>
+                                <button style="margin-top: 6%;" class="btn btn-card btn-block">Add to Cart</button>
+                            </form>
+                        </div>
                     </div>
-                    <form style="margin-left: 7%; margin-top: -5%;" class="form-inline" asp-action="add" asp-controller="Weapons" method="get">
-                        <label style="font-size: 1.3em;" class="label-space" for="quantity"><strong>Quantity:</strong></label>
-                        <input class="form-control" type="number" value="1" min="1" max="10" name="quantity">
-                        <input type="hidden" value="@item.WeaponId" name="id" />
-                        <button class="btn btn-danger" style="margin-left: 10px;">Add to Cart</button>
-                    </form>
+
                 </div>
             </div>
-            
+
         </div>
     }
 

@@ -3,11 +3,12 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 68px;
     padding-bottom: 20px;
-    background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
+    background-image: url('/images/N74.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
+    font-family: 'Black Ops One';
 }
 
 span{
@@ -84,10 +85,6 @@ li a:hover{
     margin-top: 5%;
 }
 
-.weapons-header{
-    margin-top: 1%;
-}
-
 .armor-header {
     margin-top: 1%;
 }
@@ -136,7 +133,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 }
 
 .fixed-weapons {
-    height: 550px;
+    height: 580px;
 }
 
 .fixed-ships{
@@ -187,11 +184,85 @@ input[type = "submit"] {
     vertical-align: middle;
 }
 
+@font-face {
+    font-family: 'Andromeda';
+    src: url('Andromeda-webfont.ttf')format('ttf');
+}
+
 @font-face{
-    font-family: 'Saucer BB';
-    src:url('SaucerBB-webfont.ttf')format('ttf');
+    font-family: 'Space Age';
+    src:url('SpaceAge-webfont.ttf')format('ttf');
 }
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.btn-card{
+    background-color: black;
+    color: red;
+    border: 1px solid red;
+}
+
+.btn-card:hover{
+    background-color: red;
+    color: black;
+    border: none;
+    transition-duration: .3s;
+}
+
+.red-text{
+    color: red;
+}
+
+#bob {
+    color: red;
+    background-color: black;
+    border-color: red;
+}
+
+label{
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.form-alignment{
+    margin-left: 0%;
+}
+
+/* Extra small devices (portrait phones, less than 576px)
+   No media query since this is the default in Bootstrap */
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+    ...
+}
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+    body {
+        background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+    body {
+        background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    body {
+        background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
