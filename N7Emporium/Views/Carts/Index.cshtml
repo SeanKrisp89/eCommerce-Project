@@ -4,13 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-
-
-<h2 style="text-align: center;">Details</h2>
-
-
-<h2>Cart</h2>
-
+<h2 style="text-align: center; color: red;">Cart Details</h2>
 
 @if (Model == null || (!Model.WeaponCarts.Any() && !Model.ArmorCarts.Any() && !Model.ShipCarts.Any()))
 {
@@ -37,121 +31,240 @@
                     </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
     <div id="checkout-button" style="margin-top: 15px;">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Proceed to Checkout</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Proceed to Checkout</button>
     </div>
 }
 
 else
 {
+    <div class="hide-desktop">
+        <table style="background-color: #353030;" class="table">
+            @foreach (var weapon in Model.WeaponCarts)
+            {
+                <tr>
+                    <td class="align-middle"><strong>@weapon.Weapon.Name</strong></td>
+                    <td class="align-middle"><strong>@weapon.Weapon.Price.ToString("C")</strong></td>
+                    <td style="text-align: center;">
+                        @if (weapon.Weapon.Image.Any())
+                        {
+                            <img class="img-responsive" style="max-height:6em" src="@weapon.Weapon.Image" />
+                        }
+                        else
+                        {
+                            <p>No Product Image</p>
+                        }
+                    </td>
+                    <td class="align-middle">
+                        <form method="get" asp-action="remove" asp-controller="carts">
+                            <input type="hidden" name="id" value="@weapon.WeaponId" />
+                            <input type="hidden" name="type" value="weapon" />
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                    <td class="align-middle">
+                        <form asp-controller="carts" asp-action="update">
+                            <input type="hidden" value="@weapon.WeaponId" name="id" />
+                            <input id="bob" type="number" value="@weapon.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                            <input type="hidden" name="type" value="weapon" />
+                        </form>
+                    </td>
+                </tr>
+            }
+            @foreach (var armor in Model.ArmorCarts)
+            {
+                <tr>
+                    <td class="align-middle"><strong>@armor.Armor.Name</strong></td>
+                    <td class="align-middle"><strong>@armor.Armor.Price.ToString("C")</strong></td>
+                    <td style="text-align: center;">
+                        @if (armor.Armor.Image.Any())
+                        {
+                            <img class="img-responsive" style="max-height:10em" src="@armor.Armor.Image" />
+                        }
+                        else
+                        {
+                            <p>No Product Image</p>
+                        }
+                    </td>
+                    <td class="align-middle">
+                        <form method="get" asp-action="remove" asp-controller="carts">
+                            <input type="hidden" name="id" value="@armor.ArmorId" />
+                            <input type="hidden" name="type" value="armor" />
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                    <td class="align-middle">
+                        <form asp-controller="carts" asp-action="update">
+                            <input type="hidden" value="@armor.ArmorId" name="id" />
+                            <input id="bob" type="number" value="@armor.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                            <input type="hidden" name="type" value="armor" />
+                        </form>
+                    </td>
+                </tr>
+            }
+            @foreach (var ship in Model.ShipCarts)
 
-    <table style="background-color: #353030;" class="table">
-        @foreach (var weapon in Model.WeaponCarts)
-        {
-            <tr>
-                <td class="align-middle"><strong>@weapon.Weapon.Name</strong></td>
-                <td class="align-middle"><strong>@weapon.Weapon.Price.ToString("C")</strong></td>
-                <td style="text-align: center;">
-                    @if (weapon.Weapon.Image.Any())
-                    {
-                        <img class="img-responsive" style="max-height:6em" src="@weapon.Weapon.Image" />
-                    }
-                    else
-                    {
-                        <p>No Product Image</p>
-                    }
-                </td>
-                <td class="align-middle">
-                    <form method="get" asp-action="remove" asp-controller="carts">
-                        <input type="hidden" name="id" value="@weapon.WeaponId" />
-                        <input type="hidden" name="type" value="weapon" />
-                        <button class="btn btn-danger">Remove</button>
-                    </form>
-                </td>
-                <td class="align-middle">
-                    <form asp-controller="carts" asp-action="update">
-                        <input type="hidden" value="@weapon.WeaponId" name="id" />
-                        <input id="bob" type="number" value="@weapon.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
-                        <input type="hidden" name="type" value="weapon" />
-                    </form>
-                </td>
-            </tr>
-        }
-        @foreach (var armor in Model.ArmorCarts)
-        {
-            <tr>
-                <td class="align-middle"><strong>@armor.Armor.Name</strong></td>
-                <td class="align-middle"><strong>@armor.Armor.Price.ToString("C")</strong></td>
-                <td style="text-align: center;">
-                    @if (armor.Armor.Image.Any())
-                    {
-                        <img class="img-responsive" style="max-height:10em" src="@armor.Armor.Image" />
-                    }
-                    else
-                    {
-                        <p>No Product Image</p>
-                    }
-                </td>
-                <td class="align-middle">
-                    <form method="get" asp-action="remove" asp-controller="carts">
-                        <input type="hidden" name="id" value="@armor.ArmorId" />
-                        <input type="hidden" name="type" value="armor" />
-                        <button class="btn btn-danger">Remove</button>
-                    </form>
-                </td>
-                <td class="align-middle">
-                    <form asp-controller="carts" asp-action="update">
-                        <input type="hidden" value="@armor.ArmorId" name="id" />
-                        <input type="number" value="@armor.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
-                        <input type="hidden" name="type" value="armor" />
-                    </form>
-                </td>
-            </tr>
-        }
-        @foreach (var ship in Model.ShipCarts)
-
-        {
-            <tr>
-                <td class="align-middle"><strong>@ship.Ship.Name</strong></td>
-                <td class="align-middle"><strong>@ship.Ship.Price.ToString("C")</strong></td>
-                <td style="text-align: center;">
-                    @if (ship.Ship.Image.Any())
-                    {
-                        <img class="img-responsive" style="max-height:6em" src="@ship.Ship.Image" />
-                    }
-                    else
-                    {
-                        <p>No Product Image</p>
-                    }
-                </td>
-                <td class="align-middle">
-                    <form method="get" asp-action="remove" asp-controller="carts">
-                        <input type="hidden" name="id" value="@ship.ShipId" />
-                        <input type="hidden" name="type" value="ship" />
-                        <button class="btn btn-danger">Remove</button>
-                    </form>
-                </td>
-                <td class="align-middle">
-                    <form asp-controller="carts" asp-action="update">
-                        <input type="hidden" value="@ship.ShipId" name="id" />
-                        <input type="number" value="@ship.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
-                        <input type="hidden" name="type" value="ship" />
-                    </form>
-                </td>
-            </tr>
-        }
-    </table>
-
-    <div id="checkout-button">
-        <a asp-action="checkout" asp-controller="checkout" class="btn btn-danger">Proceed to Checkout</a>
+            {
+                <tr>
+                    <td class="align-middle"><strong>@ship.Ship.Name</strong></td>
+                    <td class="align-middle"><strong>@ship.Ship.Price.ToString("C")</strong></td>
+                    <td style="text-align: center;">
+                        @if (ship.Ship.Image.Any())
+                        {
+                            <img class="img-responsive" style="max-height:6em" src="@ship.Ship.Image" />
+                        }
+                        else
+                        {
+                            <p>No Product Image</p>
+                        }
+                    </td>
+                    <td class="align-middle">
+                        <form method="get" asp-action="remove" asp-controller="carts">
+                            <input type="hidden" name="id" value="@ship.ShipId" />
+                            <input type="hidden" name="type" value="ship" />
+                            <button class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                    <td class="align-middle">
+                        <form asp-controller="carts" asp-action="update">
+                            <input type="hidden" value="@ship.ShipId" name="id" />
+                            <input id="bob" type="number" value="@ship.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                            <input type="hidden" name="type" value="ship" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div id="checkout-button">
+            <a asp-action="checkout" asp-controller="checkout" class="btn btn-danger">Proceed to Checkout</a>
+        </div>
     </div>
 }
 <br />
+<!--*****************************************************-->
+
+
+<!--This div is to be displayed in conjunction with smaller devices only by use of media query.-->
+<div>
+    @if (Model == null || (!Model.WeaponCarts.Any() && !Model.ArmorCarts.Any() && !Model.ShipCarts.Any()))
+    {
+        <!--<div class="alert-warning">
+            <p>
+                Your Cart is currently empty. Try shopping for some
+                <a asp-controller="Weapons" asp-action="index" class="btn btn-link">Weapons</a>, <a asp-controller="Armor" asp-action="index" class="btn btn-link">Armor</a>, or <a asp-controller="Ships" asp-action="index" class="btn btn-link">Ships</a>
+            </p>
+        </div>-->
+        <!-- Modal -->
+        <div style="color: black;" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Whoops...</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            It looks like you forgot to add some items to your shopping cart! How about purusing through some
+                            <a href="/Weapons" class="btn btn-link">Weapons,</a><a href="/Armor" class="btn btn-link">Armor,</a>or<a href="/Ships" class="btn btn-link">Ships?</a>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    else
+    {
+        <div class="hide-mobile mbcart-font">
+            <table style="background-color: #353030;" class="table table-dark table-borderless">
+                @foreach (var weapon in Model.WeaponCarts)
+                {
+                    <tr>
+                        <td style="padding-left: 34px;" class="align-middle"><strong>@weapon.Weapon.Name</strong></td>
+                        <td class="align-middle"><strong>@weapon.Weapon.Price.ToString("C")</strong></td>                       
+                    </tr>
+                    <tr class="border-bottom">
+                        <td style="padding-left: 34px; padding-top: 0px;" class="align-middle">
+                            <form method="get" asp-action="remove" asp-controller="carts">
+                                <input type="hidden" name="id" value="@weapon.WeaponId" />
+                                <input type="hidden" name="type" value="weapon" />
+                                <button class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                        <td class="align-middle">
+                            <form asp-controller="carts" asp-action="update">
+                                <input type="hidden" value="@weapon.WeaponId" name="id" />
+                                <input id="bob" type="number" value="@weapon.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                                <input type="hidden" name="type" value="weapon" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+                @foreach (var armor in Model.ArmorCarts)
+                {
+                    <tr>
+                        <td style="padding-left: 34px;" class="align-middle"><strong>@armor.Armor.Name</strong></td>
+                        <td class="align-middle"><strong>@armor.Armor.Price.ToString("C")</strong></td>                                            
+                    </tr>
+                    <tr class="border-bottom">
+                        <td style="padding-left: 34px; padding-top: 0px;" class="align-middle">
+                            <form method="get" asp-action="remove" asp-controller="carts">
+                                <input type="hidden" name="id" value="@armor.ArmorId" />
+                                <input type="hidden" name="type" value="armor" />
+                                <button class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                        <td class="align-middle">
+                            <form asp-controller="carts" asp-action="update">
+                                <input type="hidden" value="@armor.ArmorId" name="id" />
+                                <input id="bob" type="number" value="@armor.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                                <input type="hidden" name="type" value="armor" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+                @foreach (var ship in Model.ShipCarts)
+
+                {
+                    <tr>
+                        <td style="padding-left: 34px;" class="align-middle"><strong>@ship.Ship.Name</strong></td>
+                        <td class="align-middle"><strong>@ship.Ship.Price.ToString("C")</strong></td>                      
+                    </tr>
+                    <tr class="border-bottom">
+                        <td style="padding-left: 34px; padding-top: 0px;" class="align-middle">
+                            <form method="get" asp-action="remove" asp-controller="carts">
+                                <input type="hidden" name="id" value="@ship.ShipId" />
+                                <input type="hidden" name="type" value="ship" />
+                                <button class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                        <td class="align-middle">
+                            <form asp-controller="carts" asp-action="update">
+                                <input type="hidden" value="@ship.ShipId" name="id" />
+                                <input id="bob" type="number" value="@ship.Quantity" min="1" max="10" name="quantity" onchange="this.form.submit()" class="form-control quantity" />
+                                <input type="hidden" name="type" value="ship" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div id="checkout-button" class="container-fluid mobile-checkout">
+                <a asp-action="checkout" asp-controller="checkout" class="btn btn-danger">Proceed to Checkout</a>
+            </div>
+        </div>      
+    }
+</div>
+
 <div>
     <p>Cart created: @Html.DisplayFor(model => model.DateCreated)</p>
 </div>

@@ -1,6 +1,27 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
-body {
+
+.about {
+    color: red;
+    font-size: 5vw;
+}
+
+.about-div {
+    border: 3px solid white;
+    overflow: auto;
+    /*height: 600px;
+    width: 900px;*/
+    border-radius: 15px;
+    padding: 10px 10px 10px 15px;
+    background-image: url("https://lh3.googleusercontent.com/9h6vZcjigz_E6Zh1Hbjpr6NTrsKg5_UX-Pr0nKi2K029nCjIXnVsjFJ3pUk_7isGY76-Cbsmiw=w640-h400-e365");
+    margin: 0 auto;
+}
+
+.armor-header {
+    margin-top: 1%;
+}
+
+/*body {
     padding-top: 68px;
     padding-bottom: 20px;
     background-image: url('/images/N74.jpg');
@@ -9,62 +30,78 @@ body {
     background-size: cover;
     color: white;
     font-family: 'Black Ops One';
+}*/
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-span{
-    font-size: 1.3em;
-    font-weight: 600;
+.brand {
+    height: 70px;
+}
+
+#bob {
     color: red;
-}
-
-.home-div{
-    margin-top: 12%;
     background-color: black;
-    border: 3px solid red;
-    /*box-shadow: -5px -10px 10px red;*/
+    border-color: red;
 }
 
-.about{
+.btn-card {
+    background-color: black;
     color: red;
+    border: 1px solid red;
 }
 
-.about-div {
-    border: 3px solid white;
-    overflow: auto;
-    height: 600px;
-    width: 900px;
-    border-radius: 15px;
-    padding: 10px 10px 10px 15px;
-    background-image: url("https://lh3.googleusercontent.com/9h6vZcjigz_E6Zh1Hbjpr6NTrsKg5_UX-Pr0nKi2K029nCjIXnVsjFJ3pUk_7isGY76-Cbsmiw=w640-h400-e365");
+.btn-card:hover {
+    background-color: red;
+    color: black;
+    border: none;
+    transition-duration: .3s;
+}
+
+.card-title-margin {
+    margin-bottom: 10px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+.center-div {
     margin: 0 auto;
 }
 
-.contact-photo{
+.central-table {
+    vertical-align: middle;
+}
+
+#checkout-button {
+    margin-bottom: 10px;
+}
+
+.checkout-header {
+    margin-top: 5%;
+}
+
+.contact-div {
+    width: 100%;
+}
+
+.contact-photo {
     width: 35%;
     margin-left: 33%;
     border: 5px solid red;
     border-radius: 40%;
-    
-}
-
-#checkout-button{
-    margin-bottom: 10px;
-}
-
-.contact-div{
-    width: 100%;
-}
-
-nav a {
-    font-size: 1.3em;
-}
-
-li a {
-    color: red;
-}
-
-li a:hover{
-    color: white;
 }
 
 .dropdown-menu a {
@@ -81,53 +118,6 @@ li a:hover{
     background-color: black;
 }
 
-.checkout-header{
-    margin-top: 5%;
-}
-
-.armor-header {
-    margin-top: 1%;
-}
-
-.ships-header {
-    margin-top: 1%;
-}
-
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
-}
-
-ul.nav li.dropdown:hover ul.dropdown-menu {
-    display: block;
-}
-
 .fixed-armor {
     height: 850px;
 }
@@ -136,52 +126,145 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
     height: 580px;
 }
 
-.fixed-ships{
+.fixed-ships {
     height: 575px;
 }
 
-.fixed-pic{
+.fixed-pic {
     height: 342px;
 }
 
-.video{
-    width: 100%;
-}
-
-.quantity{
-    width: 50px;
-}
-
-.brand{
-   height: 70px;
-}
-
-.label-space{
-    margin-right: 10px;
-}
-
-.center-div{
-    margin: 0 auto;
+.form-alignment {
+    margin-left: 0%;
 }
 
 .form-spacing {
     margin-bottom: 10px;
 }
 
-.weapons-form-spacing{
+.home-bg {
+    padding-top: 68px;
+    padding-bottom: 20px;
+    background-image: url('/images/clouds-from-space.jpg') /*/images/HomePageDesktop.jpg')*/;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Black Ops One';
+}
+
+.home-div-pos{
+    margin-top: 0%;
+}
+
+.home-div {
+    margin-top: 12%;
+    background-color: black;
+    border: 3px solid red;
+    /*box-shadow: -5px -10px 10px red;*/
+}
+
+.home-n7-pos {
+    width: 150px;
+    margin-left: 0.5%;
+}
+
+.home-welcome-pos{
+    text-align: center;
+    padding-right: 0px;
+    padding-left: 3%;
+    display: inline;
+    margin-left: 35%;
+    vertical-align: middle;
+}
+
+label {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.label-space {
+    margin-right: 10px;
+}
+
+.layout-bg {
+    padding-top: 68px;
+    padding-bottom: 20px;
+    background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Black Ops One';
+}
+
+li a {
+    color: red;
+}
+
+li a:hover {
+    color: white;
+}
+
+.mbcart-font {
+    font-size: 4vw;
+}
+
+.mobile-checkout {
+    text-align: center;
+}
+
+nav a {
+    font-size: 1.3em;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.quantity {
+    width: 50px;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+.red-text {
+    color: red;
+}
+
+.ships-header {
+    margin-top: 1%;
+}
+
+span{
+    font-size: 1.3em;
+    font-weight: 600;
+    color: red;
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu {
+    display: block;
+}
+
+.video {
+    width: 100%;
+}
+
+.weapons-form-spacing {
     margin-bottom: 40px;
 }
 
-.card-title-margin{
-    margin-bottom: 10px;
-}
 
-input[type = "submit"] {
-    background: blue;
-}
 
-.central-table {
-    vertical-align: middle;
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
 }
 
 @font-face {
@@ -194,49 +277,24 @@ input[type = "submit"] {
     src:url('SpaceAge-webfont.ttf')format('ttf');
 }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-.btn-card{
-    background-color: black;
-    color: red;
-    border: 1px solid red;
-}
-
-.btn-card:hover{
-    background-color: red;
-    color: black;
-    border: none;
-    transition-duration: .3s;
-}
-
-.red-text{
-    color: red;
-}
-
-#bob {
-    color: red;
-    background-color: black;
-    border-color: red;
-}
-
-label{
-    text-align: center;
-    margin-bottom: 0px;
-}
-
-.form-alignment{
-    margin-left: 0%;
-}
 
 /* Extra small devices (portrait phones, less than 576px)
    No media query since this is the default in Bootstrap */
 
 /*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-    ...
+@media (min-width: 500px) {
+    .hide-mobile {
+        display: none;
+    }
 }
+
+@media (max-width: 500px){
+    .hide-desktop{
+        display: none;
+    }
+}
+
+
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
     body {
@@ -265,4 +323,75 @@ label{
         background-repeat: no-repeat;
         background-size: cover;
     }
+
+    .about{
+        font-size: 1vw;
+        color: red;
+    }
 }
+
+/*@media (min-width: 1200px){
+    body .home-background{
+        background-image: url("/images/HomePageDesktop.jpg")
+    }
+}*/
+
+
+.home-welcome {
+    position: relative;
+    animation-name: welcomeTo;
+    animation-direction: alternate;    
+    animation-iteration-count: 1;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+.home-image {
+    position: relative;
+    animation-name: Image; 
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-duration: 4.5s;
+    animation-timing-function: linear;
+}
+
+@keyframes welcomeTo {
+    0% {
+        opacity: .0;
+    }
+
+    50% {
+        opacity: .5;
+    }  
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes Image {
+    0% {
+        opacity: .0;
+    }
+
+    25%{
+        opacity: .0;
+    }
+
+    50% {
+        opacity: .0;
+    }
+
+    60%{
+        opacity: .3;
+    }
+
+    75%{
+        opacity: .6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
