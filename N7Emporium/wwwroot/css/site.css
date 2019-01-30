@@ -77,6 +77,10 @@ for details on configuring this project to bundle and minify static web assets. 
     width: 100%;
 }
 
+.carousel-link:hover{
+    color: red;
+}
+
 .center-div {
     margin: 0 auto;
 }
@@ -93,8 +97,53 @@ for details on configuring this project to bundle and minify static web assets. 
     margin-top: 5%;
 }
 
+.contact-bg {
+    padding-top: 68px;
+    padding-bottom: 0px;
+    background-image: url("https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcHOGNpn75Q7FLigqMW3kkGNBXPX37Iv_a8sEKPhesHQqIrBpHwgfblHP3xWg16gO0ybUZC.KdQ.9jpAihv35L3d9CS20G8KGlQ7ECvKu4o0vFNO71HZkGTm.eqjJYcWvSO0gMk6I9esaESGOIUpupXk2bC7yqRGId8HBt9ZXjIEk-&h=1080&w=1920&format=jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Black Ops One';
+}
+
 .contact-div {
-    width: 100%;
+    width: 50vw;
+}
+
+.mb-contact-div{
+    width: 100vw;
+}
+
+.contact-image {
+    width: 50vw;
+    height: 70%;
+}
+
+.mb-contact-image{
+    width: 100vw;
+    height: 50%;
+}
+
+.contact-p{  
+    height: 25%;
+    margin-bottom: 0%;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    border-bottom: 1px solid silver;
+    font-size: 1.4em;
+}
+
+.mb-contact-p {
+    height: 45%;
+    margin-top: -1%;
+    margin-bottom: 0%;
+    text-align: center;
+    padding: 20px 10px 10px 10px;
+    border-bottom: 1px solid silver;
+    font-size: 1.25em;
+    line-height: 30px;
 }
 
 .contact-photo {
@@ -102,6 +151,15 @@ for details on configuring this project to bundle and minify static web assets. 
     margin-left: 33%;
     border: 5px solid red;
     border-radius: 40%;
+}
+
+div .container-override{
+    padding-left: 0px;
+}
+
+.mb-container-override {
+    padding-left: 0px;
+    margin-top: 0px;
 }
 
 .dropdown-menu a {
@@ -154,7 +212,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .home-div-pos{
-    margin-top: 0%;
+    margin-top: .75%;
 }
 
 .home-div {
@@ -208,6 +266,24 @@ li a:hover {
 
 .mbcart-font {
     font-size: 4vw;
+}
+
+.mb-home-font{
+    font-size: 8vw;
+}
+
+.mb-homewlc-pos {
+    text-align: center;
+    padding-right: 0px;
+    padding-left: 3%;
+    display: inline;
+    margin-left: -1%;
+    vertical-align: middle;
+}
+
+.mb-home-image {
+    width: 35vw;
+    margin-left: 2.5%;
 }
 
 .mobile-checkout {
@@ -282,12 +358,15 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
    No media query since this is the default in Bootstrap */
 
 /*Small devices (landscape phones, 576px and up)*/
+
+/*For cart checkout*/
 @media (min-width: 500px) {
     .hide-mobile {
         display: none;
     }
 }
 
+/*For cart checkout*/
 @media (max-width: 500px){
     .hide-desktop{
         display: none;
@@ -355,6 +434,15 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
     animation-timing-function: linear;
 }
 
+.home-carousel {
+    position: relative;
+    animation-name: Carousel;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+}
+
 @keyframes welcomeTo {
     0% {
         opacity: .0;
@@ -388,6 +476,44 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 
     75%{
         opacity: .6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes Carousel {
+    0% {
+        opacity: .0;
+    }
+
+    25% {
+        opacity: .0;
+    }
+
+    50% {
+        opacity: .0;
+    }
+
+    60% {
+        opacity: .0;
+    }
+
+    70% {
+        opacity: .2;
+    }
+
+    80%{
+        opacity: .4;
+    }
+
+    85%{
+        opacity: .6;
+    }
+
+    90%{
+        opacity: .8;
     }
 
     100% {
