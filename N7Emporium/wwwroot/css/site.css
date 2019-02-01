@@ -15,6 +15,7 @@ for details on configuring this project to bundle and minify static web assets. 
     padding: 10px 10px 10px 15px;
     background-image: url("https://lh3.googleusercontent.com/9h6vZcjigz_E6Zh1Hbjpr6NTrsKg5_UX-Pr0nKi2K029nCjIXnVsjFJ3pUk_7isGY76-Cbsmiw=w640-h400-e365");
     margin: 0 auto;
+    margin-top: 7%;
 }
 
 .armor-header {
@@ -176,6 +177,13 @@ div .container-override{
     background-color: black;
 }
 
+.emporium {
+    margin-left: 0%;
+    font-family: 'Black Ops One';
+    font-size: 1.4em;
+    vertical-align: middle;
+}
+
 .fixed-armor {
     height: 850px;
 }
@@ -212,7 +220,8 @@ div .container-override{
 }
 
 .home-div-pos{
-    margin-top: .75%;
+    margin-top: 0%;
+    text-align: center;
 }
 
 .home-div {
@@ -228,11 +237,11 @@ div .container-override{
 }
 
 .home-welcome-pos{
-    text-align: center;
+    
     padding-right: 0px;
-    padding-left: 3%;
+    /*padding-left: 3%;*/
     display: inline;
-    margin-left: 35%;
+    /*margin-left: 35%;*/
     vertical-align: middle;
 }
 
@@ -286,8 +295,18 @@ li a:hover {
     margin-left: 2.5%;
 }
 
+.mission-stmt-hdr {
+    color: red; 
+    text-align: center;
+    margin-bottom: 2%;
+}
+
 .mobile-checkout {
     text-align: center;
+}
+
+#mr-auto{
+    margin-right: 24.5%;
 }
 
 nav a {
@@ -415,6 +434,14 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
     }
 }*/
 
+.mission-statement {
+    position: relative;
+    animation-name: MissionStatement;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-duration: 3.5s;
+    animation-timing-function: linear;
+}
 
 .home-welcome {
     position: relative;
@@ -441,6 +468,24 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
     animation-iteration-count: 1;
     animation-duration: 6s;
     animation-timing-function: linear;
+}
+
+@keyframes MissionStatement {
+    0% {
+        opacity: .0;
+    }
+
+    25%{
+        opacity: .0;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes welcomeTo {

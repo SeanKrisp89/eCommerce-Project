@@ -36,14 +36,16 @@
                         </div>
                     </li>
                 </ul>
-                <span style="margin-left: -10%; font-family: 'Black Ops One'; font-size: 1.7em;" class="navbar-text text-sm-center">N7 EMPORIUM</span>
+                <span style="margin-left: -7%; font-family: 'Black Ops One'; font-size: 1.7em;" class="navbar-text text-sm-center">N7 EMPORIUM</span>
                 <partial name="_LoginPartial" />
             </div>
         </nav>
 
         <div class="container-fluid home-div-pos">
-            <h1 class="red-text home-welcome home-welcome-pos">Welcome to</h1>
-            <img src="~/images/AnimationN7.png" class="home-image home-n7-pos" />
+            <div>
+                <h1 class="red-text home-welcome home-welcome-pos">Welcome to</h1>
+                <img src="~/images/AnimationN7.png" class="home-image home-n7-pos" />
+            </div>
         </div>
 
 
@@ -101,8 +103,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"><img src="https://cdn.shopify.com/s/files/1/0030/3802/products/n7_white_decal_1.jpg?v=1464398027" alt="N7" style="width: 80px;" /></a></li>
+                    <ul class="navbar-nav" id="mb-mr-auto">
+                        <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"><img src="https://cdn.shopify.com/s/files/1/0030/3802/products/n7_white_decal_1.jpg?v=1464398027" alt="N7" style="width: 80px;" /><span class="emporium">EMPORIUM</span></a></li>
                         <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a></li>
                         <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a></li>
                         <li class="nav-item dropdown">
