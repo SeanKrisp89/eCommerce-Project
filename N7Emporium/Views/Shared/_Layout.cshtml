@@ -13,36 +13,38 @@
 </head>
 
 <body class="layout-bg">
-    <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #000000;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav" id="mr-auto">
-                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"><img src="https://cdn.shopify.com/s/files/1/0030/3802/products/n7_white_decal_1.jpg?v=1464398027" alt="N7" style="width: 80px;" /></a></li>
-                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a></li>
-                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Shop
-                    </a>
-                    <div style="background: black;" class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/Weapons">Weapons</a>
-                        <a class="dropdown-item" href="/Armor">Armor</a>
-                        <a class="dropdown-item" href="/Ships">Ships</a>
-                    </div>
-                </li>
-            </ul>
+    <div class="hide-desktop">
+        <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #000000;">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav" id="mr-auto">
+                    <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link"><img src="https://cdn.shopify.com/s/files/1/0030/3802/products/n7_white_decal_1.jpg?v=1464398027" alt="N7" style="width: 80px;" /></a></li>
+                    <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a></li>
+                    <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Shop
+                        </a>
+                        <div style="background: black;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/Weapons">Weapons</a>
+                            <a class="dropdown-item" href="/Armor">Armor</a>
+                            <a class="dropdown-item" href="/Ships">Ships</a>
+                        </div>
+                    </li>
+                </ul>
 
-            <span style="margin-left: 0%; font-family: 'Black Ops One'; font-size: 1.7em;" class="navbar-text text-sm-center n7-nav">N7 EMPORIUM</span>
+                <span style="margin-left: 0%; font-family: 'Black Ops One'; font-size: 1.7em;" class="navbar-text text-sm-center n7-nav">N7 EMPORIUM</span>
 
-            <partial name="_LoginPartial" />
-        </div>
-    </nav>
+                <partial name="_LoginPartial" />
+            </div>
+        </nav>
 
 
-    <partial name="_CookieConsentPartial" />
-    @RenderSection("Header", false)  <!--Here Joe made a new section called Header. The first parameter is the name of the section, and the second is whether it's required on every page or not.-->
+        <partial name="_CookieConsentPartial" />
+        @RenderSection("Header", false)  <!--Here Joe made a new section called Header. The first parameter is the name of the section, and the second is whether it's required on every page or not.-->
+    </div>
 
     <div class="container body-content">
         @RenderBody()
@@ -72,6 +74,7 @@
                         </div>
                     </li>
                 </ul>
+                <partial name="_LoginPartial" />
             </div>
         </nav>
     </div>
