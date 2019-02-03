@@ -49,7 +49,7 @@ else
             {
                 <tr>
                     <td class="align-middle"><strong>@weapon.Weapon.Name</strong></td>
-                    <td class="align-middle"><strong>@weapon.Weapon.Price.ToString("C")</strong></td>
+                    <td class="align-middle" style="text-align: center;"><strong>@weapon.Weapon.Price.ToString("C")</strong></td>
                     <td style="text-align: center;">
                         @if (weapon.Weapon.Image.Any())
                         {
@@ -64,7 +64,7 @@ else
                         <form method="get" asp-action="remove" asp-controller="carts">
                             <input type="hidden" name="id" value="@weapon.WeaponId" />
                             <input type="hidden" name="type" value="weapon" />
-                            <button class="btn btn-danger">Remove</button>
+                            <button class="btn btn-danger btn-card">Remove</button>
                         </form>
                     </td>
                     <td class="align-middle">
@@ -80,7 +80,7 @@ else
             {
                 <tr>
                     <td class="align-middle"><strong>@armor.Armor.Name</strong></td>
-                    <td class="align-middle"><strong>@armor.Armor.Price.ToString("C")</strong></td>
+                    <td class="align-middle" style="text-align: center;"><strong>@armor.Armor.Price.ToString("C")</strong></td>
                     <td style="text-align: center;">
                         @if (armor.Armor.Image.Any())
                         {
@@ -95,7 +95,7 @@ else
                         <form method="get" asp-action="remove" asp-controller="carts">
                             <input type="hidden" name="id" value="@armor.ArmorId" />
                             <input type="hidden" name="type" value="armor" />
-                            <button class="btn btn-danger">Remove</button>
+                            <button class="btn btn-danger btn-card">Remove</button>
                         </form>
                     </td>
                     <td class="align-middle">
@@ -112,7 +112,7 @@ else
             {
                 <tr>
                     <td class="align-middle"><strong>@ship.Ship.Name</strong></td>
-                    <td class="align-middle"><strong>@ship.Ship.Price.ToString("C")</strong></td>
+                    <td class="align-middle" style="text-align: center;"><strong>@ship.Ship.Price.ToString("C")</strong></td>
                     <td style="text-align: center;">
                         @if (ship.Ship.Image.Any())
                         {
@@ -127,7 +127,7 @@ else
                         <form method="get" asp-action="remove" asp-controller="carts">
                             <input type="hidden" name="id" value="@ship.ShipId" />
                             <input type="hidden" name="type" value="ship" />
-                            <button class="btn btn-danger">Remove</button>
+                            <button class="btn btn-danger btn-card">Remove</button>
                         </form>
                     </td>
                     <td class="align-middle">
@@ -141,7 +141,7 @@ else
             }
         </table>
         <div id="checkout-button">
-            <a asp-action="checkout" asp-controller="checkout" class="btn btn-danger">Proceed to Checkout</a>
+            <a asp-action="checkout" asp-controller="checkout" class="btn btn-danger btn-card">Proceed to Checkout</a>
         </div>
     </div>
 }

@@ -6,37 +6,54 @@
 
 @Html.ValidationSummary(false)
 
+
 <div class="checkout-header">
     <h2>Checkout</h2>
 </div>
 
 <form method="post">
+
     <div>
         <div>
             <label asp-for="Email" style="margin-bottom: 1px;">Email Address</label>
         </div>
-        <input type="email" asp-for="Email" placeholder="name@domain.com" style="margin-bottom: 5px;" required />
+        <div>
+            <input type="email" asp-for="Email" placeholder="name@domain.com" style="margin-bottom: 5px;" required />
+        </div>
     </div>
     <div>
         <label asp-for="PhoneNumber" style="margin-bottom: 1px;">Phone</label>
         <div>
-            <input type="tel" asp-for="PhoneNumber" placeholder="123-456-7890" style="margin-bottom: 5px;" />
+            <div>
+                <input type="tel" asp-for="PhoneNumber" placeholder="123-456-7890" style="margin-bottom: 5px;" />
+            </div>
         </div>
     </div>
     <div>
         <label asp-for="Street1" style="margin-bottom: 1px;">Address 1</label>
         <div>
-            <input type="text" asp-for="Street1" placeholder="Address 1" style="margin-bottom: 5px;" required />
-        </div>
-        <label asp-for="Street2" style="margin-bottom: 1px;">Address 2</label>
-        <div>
-            <input type="text" asp-for="Street2" placeholder="Address 2" style="margin-bottom: 5px;" />
-        </div>
-        <label asp-for="City" style="margin-bottom: 1px;">City</label>
-        <div>
-            <input type="text" asp-for="City" placeholder="Chicago" style="margin-bottom: 5px;" required />
+            <div>
+                <input type="text" asp-for="Street1" placeholder="Address 1" style="margin-bottom: 5px;" required />
+            </div>
         </div>
     </div>
+    <div>
+        <label asp-for="Street2" style="margin-bottom: 1px;">Address 2</label>
+        <div>
+            <div>
+                <input type="text" asp-for="Street2" placeholder="Address 2" style="margin-bottom: 5px;" />
+            </div>
+        </div>
+    </div>
+        <div>
+        <label asp-for="City" style="margin-bottom: 1px;">City</label>
+        <div>
+            <div>
+                <input type="text" asp-for="City" placeholder="Chicago" style="margin-bottom: 5px;" required />
+            </div>
+        </div>
+    </div>
+    
     <div class="form-group">
         <label asp-for="State" style="margin-bottom: 1px;">State</label>
         <select class="form-control" id="state" asp-for="State" name="state" style="width: 178px; margin-bottom: 5px;" required >

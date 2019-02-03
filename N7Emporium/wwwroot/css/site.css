@@ -56,16 +56,42 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .btn-card {
-    background-color: black;
-    color: red;
-    border: 1px solid red;
+    background-color: red;
+    color: black;   
+    position: relative;
+    transition: 800ms ease all;
+    outline: none;
 }
 
 .btn-card:hover {
-    background-color: red;
-    color: black;
-    border: none;
+    background-color: black;
+    color: red;
     transition-duration: .3s;
+}
+
+.btn-card:before, btn-card:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: red;
+    transition: 400ms ease all;
+}
+
+.btn-card:after {
+    right: 0;
+    top: 0;
+    left: inherit;
+    bottom: inherit;
+}
+
+.btn-card:hover:before, btn-card:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
 }
 
 .card-title-margin {
@@ -337,6 +363,10 @@ nav a {
 
 .ships-header {
     margin-top: 1%;
+}
+
+.spacing-left{
+    margin-left: 2%;
 }
 
 span{
