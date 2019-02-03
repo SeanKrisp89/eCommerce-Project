@@ -26,7 +26,7 @@
     <div>
         <label asp-for="Street1" style="margin-bottom: 1px;">Address 1</label>
         <div>
-            <input type="text" asp-for="Street1" placeholder="Address 1" style="margin-bottom: 5px;" />
+            <input type="text" asp-for="Street1" placeholder="Address 1" style="margin-bottom: 5px;" required />
         </div>
         <label asp-for="Street2" style="margin-bottom: 1px;">Address 2</label>
         <div>
@@ -34,12 +34,12 @@
         </div>
         <label asp-for="City" style="margin-bottom: 1px;">City</label>
         <div>
-            <input type="text" asp-for="City" placeholder="Chicago" style="margin-bottom: 5px;" />
+            <input type="text" asp-for="City" placeholder="Chicago" style="margin-bottom: 5px;" required />
         </div>
     </div>
     <div class="form-group">
         <label asp-for="State" style="margin-bottom: 1px;">State</label>
-        <select class="form-control" id="state" asp-for="State" name="state" style="width: 178px; margin-bottom: 5px;">
+        <select class="form-control" id="state" asp-for="State" name="state" style="width: 178px; margin-bottom: 5px;" required >
             <option value="">N/A</option>
             <option value="AK">Alaska</option>
             <option value="AL">Alabama</option>
@@ -98,12 +98,12 @@
     <div style="margin-top: 5px;">
         <label asp-for="PostalCode" style="margin-bottom: 1px;">Zip</label>
         <div>
-            <input type="text" asp-for="PostalCode" placeholder="Zip" style="margin-bottom: 5px;" />
+            <input type="text" asp-for="PostalCode" placeholder="Zip" style="margin-bottom: 5px;" required />
         </div>
     </div>
-
-    <button class="btn btn-primary" id="validate-address" disabled>Validate Address</button>
-
+    <div style="margin-top: 1%; margin-bottom: 1%;">
+        <button class="btn btn-primary" id="validate-address" disabled>Validate Address</button>
+    </div>
     <div class="form-group">
         <label for="card-number">Card Number</label>
         <div style="width: 180px;" class="form-control" id="card-number"></div>
